@@ -43,52 +43,64 @@ function Login() {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px' }}>
-      <h2>{isLogin ? 'Login' : 'Register'}</h2>
-      <form onSubmit={handleSubmit}>
-        {!isLogin && (
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            style={{ width: '100%', margin: '10px 0', padding: '8px' }}
-          />
+    <div className="container" style={{ maxWidth: '400px', margin: '50px auto' }}>
+      <div className="card">
+        <h2>{isLogin ? 'Login' : 'Register'}</h2>
+        <form onSubmit={handleSubmit}>
+          {!isLogin && (
+            <div className="form-group">
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          )}
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+            {isLogin ? 'Login' : 'Register'}
+          </button>
+        </form>
+        
+        {message && (
+          <div className={`alert ${message.includes('success') ? 'alert-success' : 'alert-error'}`}>
+            {message}
+          </div>
         )}
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          style={{ width: '100%', margin: '10px 0', padding: '8px' }}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          style={{ width: '100%', margin: '10px 0', padding: '8px' }}
-        />
-        <button type="submit" style={{ width: '100%', padding: '10px', margin: '10px 0' }}>
-          {isLogin ? 'Login' : 'Register'}
+        
+        <button 
+          onClick={() => setIsLogin(!isLogin)}
+          style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer', marginTop: '15px' }}
+        >
+          {isLogin ? 'Need an account? Register' : 'Have an account? Login'}
         </button>
-      </form>
-      {message && <p style={{ color: message.includes('success') ? 'green' : 'red' }}>{message}</p>}
-      <button 
-        onClick={() => setIsLogin(!isLogin)}
-        style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer' }}
-      >
-        {isLogin ? 'Need an account? Register' : 'Have an account? Login'}
-      </button>
-      <div style={{ marginTop: '20px', padding: '10px', background: '#f5f5f5' }}>
-        <p><strong>Demo Admin:</strong> admin@company.com / admin123</p>
-        <p><strong>Demo Employee:</strong> john@company.com / password123</p>
+        
+        <div style={{ marginTop: '20px', padding: '15px', background: '#f8f9fa', borderRadius: '4px' }}>
+          <p><strong>Demo Admin:</strong> admin@company.com / admin123</p>
+          <p><strong>Demo Employee:</strong> john@company.com / password123</p>
+        </div>
       </div>
     </div>
   );
