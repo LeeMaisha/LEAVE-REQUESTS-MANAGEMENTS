@@ -1,7 +1,5 @@
-# LEAVE-REQUESTS-MANAGEMENTS
 LEAVE-REQUESTS-MANAGEMENTS
 Leave Request Management System
-
 Project Overview
 A full-stack web application for managing employee leave requests with role-based access control. Employees can submit leave requests and view their status, while admins can approve or reject requests and view system statistics.
 
